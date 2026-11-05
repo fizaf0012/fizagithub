@@ -706,7 +706,8 @@
         grid-template-columns: 1fr;
     }
 }
-        /* SCREENSHOT IMAGE VIEWER */
+        
+/* SCREENSHOT IMAGE VIEWER */
 
 .screenshot-viewer {
     width: 95%;
@@ -735,6 +736,7 @@
 
 .viewer-close {
     align-self: flex-end;
+    flex-shrink: 0;
     border: none;
     background: #334155;
     color: white;
@@ -755,6 +757,7 @@
     align-items: center;
     gap: 12px;
     margin: 10px 0 20px;
+    flex-shrink: 0;
 }
 
 .viewer-toolbar button {
@@ -774,25 +777,24 @@
 .viewer-image-container {
     flex: 1;
     min-height: 0;
+    min-width: 0;
     overflow: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: #020617;
     border-radius: 8px;
 }
 
 .viewer-image-container img {
-    max-width: 100%;
-    max-height: 100%;
+    display: block;
+    max-width: none;
+    max-height: none;
     width: auto;
     height: auto;
+    margin: auto;
     object-fit: contain;
-    transform-origin: center center;
-    transition: transform 0.2s ease;
 }
 
 #viewerCaption {
+    flex-shrink: 0;
     text-align: center;
     color: #cbd5e1;
     margin: 12px 0 0;
@@ -811,10 +813,15 @@
         padding: 12px;
     }
 
+    .viewer-toolbar {
+        gap: 8px;
+    }
+
     .viewer-toolbar button {
         padding: 8px 14px;
     }
 }
+
     </style>
 </head>
 
@@ -1380,6 +1387,7 @@
 <footer>
     <p>© 2026 Fiza Fatima. All Rights Reserved.</p>
 </footer>
+
 <script>
     // Open PolicyPulse project details
     function openPolicyPulse() {
@@ -1399,16 +1407,19 @@
         }
     }
 
-    // Screenshot viewer variables
+    // Screenshot viewer settings
     let currentZoom = 1;
+    let screenshotFitWidth = 0;
+    let screenshotFitHeight = 0;
 
-    // Open screenshot viewer when an image is clicked
+    // Open screenshot viewer
     document.addEventListener("DOMContentLoaded", function () {
 
         const screenshots = document.querySelectorAll(".policy-gallery img");
         const viewer = document.getElementById("screenshotViewer");
         const viewerImage = document.getElementById("viewerImage");
         const viewerCaption = document.getElementById("viewerCaption");
+        const imageContainer = document.querySelector(".viewer-image-container");
 
         screenshots.forEach(function (img) {
 
@@ -1416,23 +1427,31 @@
 
                 currentZoom = 1;
 
+                viewerImage.onload = function () {
+                    fitScreenshotToViewer();
+                };
+
                 viewerImage.src = this.src;
                 viewerImage.alt = this.alt;
 
-                const caption = this.closest("figure").querySelector("figcaption");
+                const caption = this.closest("figure")
+                    .querySelector("figcaption");
 
                 viewerCaption.textContent = caption
                     ? caption.textContent
                     : this.alt;
 
-                updateScreenshotZoom();
+                if (viewerImage.complete && viewerImage.naturalWidth) {
+                    fitScreenshotToViewer();
+                }
 
                 viewer.showModal();
+
             });
 
         });
 
-        // Close viewer by clicking outside the image
+        // Close viewer when clicking outside its content
         viewer.addEventListener("click", function (event) {
             if (event.target === viewer) {
                 closeScreenshotViewer();
@@ -1441,8 +1460,36 @@
 
     });
 
+    // Fit the complete screenshot inside the viewer
+    function fitScreenshotToViewer() {
+
+        const viewerImage = document.getElementById("viewerImage");
+        const imageContainer = document.querySelector(".viewer-image-container");
+
+        if (!viewerImage.naturalWidth || !imageContainer) return;
+
+        const availableWidth = imageContainer.clientWidth;
+        const availableHeight = imageContainer.clientHeight;
+
+        const widthRatio = availableWidth / viewerImage.naturalWidth;
+        const heightRatio = availableHeight / viewerImage.naturalHeight;
+
+        const fitScale = Math.min(widthRatio, heightRatio, 1);
+
+        screenshotFitWidth = viewerImage.naturalWidth * fitScale;
+        screenshotFitHeight = viewerImage.naturalHeight * fitScale;
+
+        currentZoom = 1;
+
+        updateScreenshotZoom();
+
+        imageContainer.scrollTop = 0;
+        imageContainer.scrollLeft = 0;
+    }
+
     // Close screenshot viewer
     function closeScreenshotViewer() {
+
         const viewer = document.getElementById("screenshotViewer");
 
         if (viewer) {
@@ -1450,37 +1497,45 @@
         }
     }
 
-    // Zoom in or out
+    // Zoom in and out
     function zoomScreenshot(change) {
 
         currentZoom += change;
 
-        if (currentZoom < 0.4) {
-            currentZoom = 0.4;
-        }
-
-        if (currentZoom > 3) {
-            currentZoom = 3;
-        }
+        currentZoom = Math.max(0.4, Math.min(currentZoom, 4));
 
         updateScreenshotZoom();
     }
 
-    // Reset zoom
+    // Reset screenshot zoom
     function resetScreenshotZoom() {
+
         currentZoom = 1;
+
         updateScreenshotZoom();
+
+        const imageContainer = document.querySelector(".viewer-image-container");
+
+        if (imageContainer) {
+            imageContainer.scrollTop = 0;
+            imageContainer.scrollLeft = 0;
+        }
     }
 
-    // Apply zoom to image
+    // Update actual image dimensions
     function updateScreenshotZoom() {
 
         const viewerImage = document.getElementById("viewerImage");
 
-        if (viewerImage) {
-            viewerImage.style.transform = `scale(${currentZoom})`;
-        }
+        if (!viewerImage || !screenshotFitWidth) return;
+
+        viewerImage.style.width =
+            (screenshotFitWidth * currentZoom) + "px";
+
+        viewerImage.style.height =
+            (screenshotFitHeight * currentZoom) + "px";
     }
 </script>
+
 </body>
 </html>
