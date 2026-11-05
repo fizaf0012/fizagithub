@@ -574,6 +574,138 @@
     font-size: 13px;
     margin-bottom: 15px;
 }
+        /* POLICY PULSE MODAL */
+
+.policy-modal {
+    width: 90%;
+    max-width: 1100px;
+    max-height: 90vh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 14px;
+    background: #ffffff;
+    color: #1e293b;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.policy-modal::backdrop {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(4px);
+}
+
+.policy-modal-content {
+    position: relative;
+    padding: 40px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    margin-top: -10px;
+    margin-right: -10px;
+    border: none;
+    background: #f1f5f9;
+    color: #334155;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 26px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.modal-close:hover {
+    background: #e2e8f0;
+}
+
+.policy-modal h2 {
+    font-size: 30px;
+    color: #0f172a;
+    margin-bottom: 12px;
+}
+
+.policy-modal h3 {
+    font-size: 20px;
+    color: #1e40af;
+    margin-top: 28px;
+    margin-bottom: 12px;
+}
+
+.policy-modal p,
+.policy-modal li {
+    line-height: 1.7;
+    color: #475569;
+}
+
+.policy-modal ul {
+    padding-left: 22px;
+}
+
+.modal-intro {
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.policy-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.policy-gallery figure {
+    margin: 0;
+    padding: 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.policy-gallery img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    background: #ffffff;
+    border-radius: 7px;
+    cursor: zoom-in;
+}
+
+.policy-gallery figcaption {
+    text-align: center;
+    font-size: 13px;
+    color: #475569;
+    margin-top: 9px;
+}
+
+.screenshot-hint {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+    .policy-modal {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .policy-modal-content {
+        padding: 22px;
+    }
+
+    .policy-modal h2 {
+        font-size: 25px;
+    }
+
+    .policy-gallery {
+        grid-template-columns: 1fr;
+    }
+}
     </style>
 </head>
 
@@ -864,6 +996,125 @@
 
         </div>
     </div>
+    <!-- POLICY PULSE DETAILS MODAL -->
+<dialog id="policyPulseModal" class="policy-modal">
+
+    <div class="policy-modal-content">
+
+        <button class="modal-close"
+                type="button"
+                onclick="closePolicyPulse()"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <div class="project-number">FINAL YEAR PROJECT</div>
+
+        <h2>PolicyPulse</h2>
+
+        <p class="modal-intro">
+            An AI-powered public opinion analysis platform that collects
+            multilingual policy-related data and analyzes public sentiment
+            using Natural Language Processing.
+        </p>
+
+        <h3>Project Overview</h3>
+
+        <p>
+            PolicyPulse is my Final Year Project (FYP), developed
+            to analyze public opinion about government policies
+            and public issues, with a focus on health and education.
+            It uses NLP and AI to classify public feedback into
+            positive, negative, and neutral sentiments.
+        </p>
+
+        <h3>Key Features</h3>
+
+        <ul>
+            <li>Multilingual analysis of Urdu, Roman Urdu, and English.</li>
+            <li>Positive, negative, and neutral sentiment classification.</li>
+            <li>Interactive sentiment dashboards and trend analysis.</li>
+            <li>Policy comparison and regional analysis.</li>
+            <li>AI-powered chatbot for policy-related queries.</li>
+            <li>Role-based access for different user types.</li>
+        </ul>
+
+        <h3>My Contribution</h3>
+
+        <p>
+            Worked on data collection and preprocessing, multilingual
+            sentiment analysis, backend integration, database design,
+            dashboard development, documentation, and testing.
+        </p>
+
+        <h3>Application Screenshots</h3>
+
+        <p class="screenshot-hint">
+            Select any screenshot to view it in a larger size.
+        </p>
+
+        <div class="policy-gallery">
+
+            <figure>
+                <img src="images/01-policy-pulse-homepage.jpg" alt="PolicyPulse homepage">
+                <figcaption>PolicyPulse Homepage</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/02-account-signup.jpg" alt="Account registration">
+                <figcaption>User Registration</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/03-admin-dashboard.jpg" alt="Admin dashboard">
+                <figcaption>Admin Dashboard</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/04-sentiment-analysis-overview.png" alt="Sentiment analysis overview">
+                <figcaption>Sentiment Analysis Overview</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/05-sentiment-trends.png" alt="Sentiment trends">
+                <figcaption>Sentiment Trends</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/06-policy-comparison.png" alt="Policy comparison">
+                <figcaption>Policy Comparison</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/07-ai-chatbot.png" alt="AI chatbot">
+                <figcaption>AI Chatbot</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/08-data-explorer.png" alt="Data explorer">
+                <figcaption>Data Explorer</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/09-user-management.png" alt="User management">
+                <figcaption>User Management</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/image (1).png" alt="Party supporters sentiment">
+                <figcaption>Party Supporters Sentiment</figcaption>
+            </figure>
+
+            <figure>
+                <img src="images/image.png" alt="Multilingual data collection">
+                <figcaption>Multilingual Data Collection</figcaption>
+            </figure>
+
+        </div>
+
+    </div>
+
+</dialog>
 </section>
 
 <!-- Skills Section -->
@@ -985,6 +1236,37 @@
 <footer>
     <p>© 2026 Fiza Fatima. All Rights Reserved.</p>
 </footer>
+<script>
+    // Open PolicyPulse project details
+    function openPolicyPulse() {
+        const modal = document.getElementById("policyPulseModal");
 
+        if (modal) {
+            modal.showModal();
+        }
+    }
+
+    // Close PolicyPulse project details
+    function closePolicyPulse() {
+        const modal = document.getElementById("policyPulseModal");
+
+        if (modal) {
+            modal.close();
+        }
+    }
+
+    // Close modal when clicking outside its content
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("policyPulseModal");
+
+        if (modal) {
+            modal.addEventListener("click", function (event) {
+                if (event.target === modal) {
+                    closePolicyPulse();
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
