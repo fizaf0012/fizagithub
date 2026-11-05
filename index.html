@@ -706,6 +706,115 @@
         grid-template-columns: 1fr;
     }
 }
+        /* SCREENSHOT IMAGE VIEWER */
+
+.screenshot-viewer {
+    width: 95%;
+    max-width: 1200px;
+    height: 90vh;
+    max-height: 90vh;
+    margin: auto;
+    padding: 0;
+    border: none;
+    border-radius: 12px;
+    background: #0f172a;
+    color: white;
+}
+
+.screenshot-viewer::backdrop {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.viewer-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.viewer-close {
+    align-self: flex-end;
+    border: none;
+    background: #334155;
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.viewer-close:hover {
+    background: #475569;
+}
+
+.viewer-toolbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 20px;
+}
+
+.viewer-toolbar button {
+    border: 1px solid #64748b;
+    background: #1e293b;
+    color: white;
+    padding: 9px 18px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.viewer-toolbar button:hover {
+    background: #334155;
+}
+
+.viewer-image-container {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #020617;
+    border-radius: 8px;
+}
+
+.viewer-image-container img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transform-origin: center center;
+    transition: transform 0.2s ease;
+}
+
+#viewerCaption {
+    text-align: center;
+    color: #cbd5e1;
+    margin: 12px 0 0;
+    font-size: 14px;
+}
+
+/* MOBILE VIEWER */
+
+@media (max-width: 600px) {
+    .screenshot-viewer {
+        width: 96%;
+        height: 85vh;
+    }
+
+    .viewer-content {
+        padding: 12px;
+    }
+
+    .viewer-toolbar button {
+        padding: 8px 14px;
+    }
+}
     </style>
 </head>
 
@@ -1290,18 +1399,88 @@
         }
     }
 
-    // Close modal when clicking outside its content
-    document.addEventListener("DOMContentLoaded", function () {
-        const modal = document.getElementById("policyPulseModal");
+    // Screenshot viewer variables
+    let currentZoom = 1;
 
-        if (modal) {
-            modal.addEventListener("click", function (event) {
-                if (event.target === modal) {
-                    closePolicyPulse();
-                }
+    // Open screenshot viewer when an image is clicked
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const screenshots = document.querySelectorAll(".policy-gallery img");
+        const viewer = document.getElementById("screenshotViewer");
+        const viewerImage = document.getElementById("viewerImage");
+        const viewerCaption = document.getElementById("viewerCaption");
+
+        screenshots.forEach(function (img) {
+
+            img.addEventListener("click", function () {
+
+                currentZoom = 1;
+
+                viewerImage.src = this.src;
+                viewerImage.alt = this.alt;
+
+                const caption = this.closest("figure").querySelector("figcaption");
+
+                viewerCaption.textContent = caption
+                    ? caption.textContent
+                    : this.alt;
+
+                updateScreenshotZoom();
+
+                viewer.showModal();
             });
-        }
+
+        });
+
+        // Close viewer by clicking outside the image
+        viewer.addEventListener("click", function (event) {
+            if (event.target === viewer) {
+                closeScreenshotViewer();
+            }
+        });
+
     });
+
+    // Close screenshot viewer
+    function closeScreenshotViewer() {
+        const viewer = document.getElementById("screenshotViewer");
+
+        if (viewer) {
+            viewer.close();
+        }
+    }
+
+    // Zoom in or out
+    function zoomScreenshot(change) {
+
+        currentZoom += change;
+
+        if (currentZoom < 0.4) {
+            currentZoom = 0.4;
+        }
+
+        if (currentZoom > 3) {
+            currentZoom = 3;
+        }
+
+        updateScreenshotZoom();
+    }
+
+    // Reset zoom
+    function resetScreenshotZoom() {
+        currentZoom = 1;
+        updateScreenshotZoom();
+    }
+
+    // Apply zoom to image
+    function updateScreenshotZoom() {
+
+        const viewerImage = document.getElementById("viewerImage");
+
+        if (viewerImage) {
+            viewerImage.style.transform = `scale(${currentZoom})`;
+        }
+    }
 </script>
 </body>
 </html>
