@@ -4,123 +4,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fiza Fatima | Portfolio</title>
+    <meta name="description" content="Portfolio of Fiza Fatima, Data Science Graduate and aspiring AI and Software Developer.">
+    <title>Fiza Fatima | Data Science Portfolio</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --navy: #14213d;
+            --blue: #2563eb;
+            --light-blue: #eff6ff;
+            --text: #334155;
+            --muted: #64748b;
+            --white: #ffffff;
+            --background: #f8fafc;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--background);
+            color: var(--text);
             line-height: 1.7;
         }
 
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: 84%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* Navigation */
+
         header {
-            padding: 25px 8%;
+            background: var(--white);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
-        header h2 {
-            color: #38bdf8;
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--blue);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
         }
 
         nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
+            color: var(--text);
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        section {
-            padding: 65px 8%;
+        nav a:hover {
+            color: var(--blue);
         }
+
+        /* Hero */
 
         .hero {
-            min-height: 65vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            background: var(--white);
+            padding: 105px 0;
+        }
+
+        .hero-content {
+            max-width: 780px;
+        }
+
+        .intro {
+            color: var(--blue);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
         }
 
         .hero h1 {
-            font-size: 46px;
-            margin-bottom: 15px;
+            font-size: clamp(38px, 6vw, 60px);
+            line-height: 1.2;
+            color: var(--navy);
+            margin: 18px 0;
         }
 
-        .hero span {
-            color: #38bdf8;
+        .hero h1 span {
+            color: var(--blue);
         }
 
-        .hero p, .about p {
-            max-width: 700px;
-            color: #cbd5e1;
+        .hero h2 {
+            font-size: 21px;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 20px;
         }
 
-        .button {
+        .hero p {
+            max-width: 680px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 30px;
+        }
+
+        .btn {
             display: inline-block;
-            margin-top: 25px;
-            padding: 10px 22px;
-            background: #0284c7;
-            color: white;
-            text-decoration: none;
+            padding: 12px 23px;
             border-radius: 6px;
-            width: fit-content;
+            font-weight: bold;
+            font-size: 14px;
+            transition: 0.3s;
         }
 
-        h2.section-title {
-            color: #38bdf8;
-            margin-bottom: 25px;
+        .btn-primary {
+            background: var(--blue);
+            color: white;
         }
 
-        .projects {
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--blue);
+            color: var(--blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--light-blue);
+        }
+
+        /* General Sections */
+
+        section {
+            padding: 75px 0;
+        }
+
+        .section-heading {
+            margin-bottom: 35px;
+        }
+
+        .section-heading span {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            color: var(--navy);
+            margin-top: 7px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            max-width: 700px;
+            margin-top: 8px;
+        }
+
+        /* About */
+
+        .about-content {
+            max-width: 850px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* Experience */
+
+        .experience-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
+            gap: 22px;
+        }
+
+        .experience-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--blue);
+            border-radius: 8px;
+            padding: 25px;
+        }
+
+        .experience-card h3 {
+            color: var(--navy);
+            font-size: 19px;
+        }
+
+        .experience-card h4 {
+            color: var(--blue);
+            font-size: 15px;
+            font-weight: 600;
+            margin: 4px 0;
+        }
+
+        .experience-card .date {
+            color: var(--muted);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .experience-card ul {
+            padding-left: 20px;
+            color: var(--muted);
+        }
+
+        /* Projects */
+
+        #projects {
+            background: var(--white);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 22px;
         }
 
         .project-card {
-            background: #1e293b;
+            background: var(--background);
+            border: 1px solid #e2e8f0;
+            border-radius: 9px;
             padding: 25px;
-            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }
+
+        .project-number {
+            color: var(--blue);
+            font-size: 13px;
+            font-weight: bold;
         }
 
         .project-card h3 {
-            margin-bottom: 10px;
+            color: var(--navy);
+            font-size: 19px;
+            margin: 10px 0;
         }
 
         .project-card p {
-            color: #cbd5e1;
+            color: var(--muted);
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .tags span {
+            background: var(--light-blue);
+            color: #1d4ed8;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Skills */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .skill-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 22px;
+            border-radius: 8px;
+        }
+
+        .skill-card h3 {
+            color: var(--navy);
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        .skill-card p {
+            color: var(--muted);
             font-size: 14px;
         }
 
-        .skills {
+        /* Education */
+
+        .education-card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .education-card h3 {
+            color: var(--navy);
+        }
+
+        .education-card p {
+            color: var(--muted);
+        }
+
+        /* Contact */
+
+        #contact {
+            background: var(--navy);
+            color: white;
+        }
+
+        #contact .section-heading h2 {
+            color: white;
+        }
+
+        #contact .section-heading p {
             color: #cbd5e1;
         }
 
-        footer {
-            text-align: center;
-            padding: 25px;
-            color: #94a3b8;
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        @media(max-width: 600px) {
-            .hero h1 {
-                font-size: 34px;
+        .contact-links a {
+            color: white;
+            border: 1px solid #64748b;
+            padding: 11px 17px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .contact-links a:hover {
+            background: var(--blue);
+            border-color: var(--blue);
+        }
+
+        footer {
+            background: #0b1428;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        /* Mobile */
+
+        @media (max-width: 700px) {
+            .container {
+                width: 90%;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
             }
 
             nav {
-                margin-top: 15px;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
             }
 
-            nav a {
-                margin: 0 10px 0 0;
+            .hero {
+                padding: 75px 0;
+            }
+
+            section {
+                padding: 55px 0;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
             }
         }
     </style>
@@ -129,112 +416,391 @@
 <body>
 
 <header>
-    <h2>Fiza Fatima</h2>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <div class="container navbar">
+        <a href="#home" class="logo">Fiza<span>.</span></a>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </div>
 </header>
 
-<section class="hero">
-    <h1>Hello, I'm <span>Fiza Fatima</span></h1>
-    <h2>Data Science Graduate | AI & Software Development</h2>
-    <p>
-        I enjoy building data-driven applications, exploring
-        artificial intelligence, developing software solutions,
-        and turning complex data into meaningful insights.
-    </p>
-    <a class="button" href="#projects">Explore My Projects</a>
+<!-- Hero Section -->
+
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-content">
+
+            <div class="intro">Data Science Graduate</div>
+
+            <h1>Hello, I'm <span>Fiza Fatima</span></h1>
+
+            <h2>Data Science | AI | Software Development</h2>
+
+            <p>
+                I am passionate about transforming data into meaningful
+                insights and building practical technology solutions.
+                My interests include data analytics, artificial intelligence,
+                natural language processing, and software development.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn btn-primary">
+                    Explore Projects
+                </a>
+
+                <a href="mailto:fizaf0012@gmail.com" class="btn btn-outline">
+                    Contact Me
+                </a>
+            </div>
+
+        </div>
+    </div>
 </section>
 
-<section id="about" class="about">
-    <h2 class="section-title">About Me</h2>
-    <p>
-        I am a Data Science graduate from COMSATS University
-        Islamabad with practical experience in data analytics,
-        machine learning, backend development, databases,
-        and software engineering.
-    </p>
-</section>
+<!-- About Section -->
 
-<section id="projects">
-    <h2 class="section-title">Featured Projects</h2>
+<section id="about">
+    <div class="container">
 
-    <div class="projects">
-
-        <div class="project-card">
-            <h3>PolicyPulse</h3>
-            <p>
-                An AI-powered public opinion analysis platform
-                using multilingual data collection, NLP,
-                sentiment analysis, and interactive dashboards.
-            </p>
+        <div class="section-heading">
+            <span>Introduction</span>
+            <h2>About Me</h2>
         </div>
 
-        <div class="project-card">
-            <h3>Jobify Analytics</h3>
+        <div class="about-content">
             <p>
-                A recruitment analytics project using SQL
-                data views and Looker Studio dashboards
-                to analyze hiring activities and KPIs.
+                I am a Data Science graduate from COMSATS University
+                Islamabad with practical experience in data analytics,
+                machine learning, natural language processing,
+                database management, and software engineering.
             </p>
-        </div>
 
-        <div class="project-card">
-            <h3>Tesla Sentiment Analysis</h3>
-            <p>
-                Social media sentiment analysis using
-                Python, VADER, TF-IDF, LDA, and Tableau.
-            </p>
-        </div>
+            <br>
 
-        <div class="project-card">
-            <h3>Fake News Detection</h3>
             <p>
-                A machine learning project using PySpark,
-                TF-IDF, and classification algorithms.
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>FAMBZZHH Website</h3>
-            <p>
-                A responsive business website developed
-                using React, Firebase, and EmailJS.
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>Library Management System</h3>
-            <p>
-                A Java-based application for managing
-                library operations, inventory, and borrowing.
+                Through academic projects and professional internships,
+                I have worked on data-driven applications, analytical
+                dashboards, AI-based solutions, and database systems.
+                I enjoy learning new technologies and applying them
+                to real-world problems.
             </p>
         </div>
 
     </div>
 </section>
 
-<section id="skills">
-    <h2 class="section-title">Technical Skills</h2>
-    <p class="skills">
-        Python | Java | SQL | React | FastAPI |
-        PostgreSQL | MySQL | Machine Learning |
-        NLP | Docker | AWS | Looker Studio | Tableau
-    </p>
+<!-- Experience Section -->
+
+<section id="experience">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>Professional Background</span>
+            <h2>Experience</h2>
+        </div>
+
+        <div class="experience-list">
+
+            <div class="experience-card">
+                <h3>IT & Software Engineering Intern</h3>
+                <h4>Cymax Technologies</h4>
+                <div class="date">August 2026 – September 2026</div>
+
+                <ul>
+                    <li>
+                        Contributed to research and development of
+                        PostgreSQL high availability and disaster
+                        recovery architecture for Odoo.
+                    </li>
+                    <li>
+                        Evaluated replication, failover, and disaster
+                        recovery approaches for a proof of concept.
+                    </li>
+                    <li>
+                        Developed SQL data views and recruitment
+                        analytics KPIs for the Jobify project.
+                    </li>
+                    <li>
+                        Designed interactive recruitment analytics
+                        dashboards using Looker Studio.
+                    </li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Data Analyst Intern</h3>
+                <h4>Data n Dashboards Limited</h4>
+                <div class="date">July 2025 – August 2025</div>
+
+                <ul>
+                    <li>
+                        Worked with real-world datasets and
+                        data analytics workflows.
+                    </li>
+                    <li>
+                        Gained practical experience in data
+                        visualization and dashboard development.
+                    </li>
+                    <li>
+                        Explored analytical storytelling using Tableau.
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
 </section>
 
+<!-- Projects Section -->
+
+<section id="projects">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>My Work</span>
+            <h2>Featured Projects</h2>
+            <p>
+                A selection of academic and practical projects
+                demonstrating my experience with data, AI,
+                analytics, and software development.
+            </p>
+        </div>
+
+        <div class="projects-grid">
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 01</div>
+                <h3>PolicyPulse</h3>
+                <p>
+                    An AI-powered public opinion analysis platform
+                    that collects multilingual policy-related data
+                    and analyzes public sentiment using NLP.
+                    Includes a sentiment analysis pipeline,
+                    chatbot, and interactive dashboard.
+                </p>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>NLP</span>
+                    <span>XLM-RoBERTa</span>
+                    <span>FastAPI</span>
+                    <span>PostgreSQL</span>
+                    <span>Streamlit</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 02</div>
+                <h3>Jobify Recruitment Analytics</h3>
+                <p>
+                    A recruitment analytics and business intelligence
+                    project using relational database views and
+                    interactive dashboards to evaluate hiring
+                    activities, application trends, and KPIs.
+                </p>
+                <div class="tags">
+                    <span>SQL</span>
+                    <span>MySQL</span>
+                    <span>Looker Studio</span>
+                    <span>Data Analytics</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 03</div>
+                <h3>Tesla Cybertruck Sentiment Analysis</h3>
+                <p>
+                    Analyzed social media discussions about the
+                    Tesla Cybertruck using sentiment analysis
+                    and topic modeling to discover public opinions
+                    and discussion patterns.
+                </p>
+                <div class="tags">
+                    <span>Python</span>
+                    <span>VADER</span>
+                    <span>TF-IDF</span>
+                    <span>LDA</span>
+                    <span>Tableau</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 04</div>
+                <h3>Fake News Detection</h3>
+                <p>
+                    Developed a machine learning solution for
+                    fake news classification using distributed
+                    data processing, text feature extraction,
+                    and classification algorithms.
+                </p>
+                <div class="tags">
+                    <span>PySpark</span>
+                    <span>Machine Learning</span>
+                    <span>TF-IDF</span>
+                    <span>AWS S3</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 05</div>
+                <h3>FAMBZZHH Business Website</h3>
+                <p>
+                    Developed a responsive business website
+                    with interactive features and integrated
+                    backend services for communication and
+                    data management.
+                </p>
+                <div class="tags">
+                    <span>React</span>
+                    <span>Firebase</span>
+                    <span>EmailJS</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">PROJECT 06</div>
+                <h3>Library Management System</h3>
+                <p>
+                    Built a Java-based application to support
+                    library operations, including inventory
+                    management, user authentication, and
+                    borrowing activities.
+                </p>
+                <div class="tags">
+                    <span>Java</span>
+                    <span>Advanced Java</span>
+                    <span>GUI</span>
+                    <span>Database</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+
+<section id="skills">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>What I Work With</span>
+            <h2>Technical Skills</h2>
+        </div>
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <p>Python, Java, SQL, HTML, CSS, JavaScript</p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Data Science & AI</h3>
+                <p>
+                    Machine Learning, NLP, Sentiment Analysis,
+                    Pandas, PySpark, Statistics
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Databases & Backend</h3>
+                <p>
+                    PostgreSQL, MySQL, MariaDB,
+                    FastAPI, Firebase
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Data Visualization</h3>
+                <p>
+                    Looker Studio, Tableau,
+                    Dashboard Development, Data Storytelling
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Cloud & DevOps</h3>
+                <p>
+                    AWS, Docker, Kubernetes,
+                    Jenkins, Git, GitHub, Linux
+                </p>
+            </div>
+
+            <div class="skill-card">
+                <h3>Tools & Technologies</h3>
+                <p>
+                    Streamlit, Selenium,
+                    REST APIs, CI/CD
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+
+<section id="education">
+    <div class="container">
+
+        <div class="section-heading">
+            <span>Academic Background</span>
+            <h2>Education</h2>
+        </div>
+
+        <div class="education-card">
+            <h3>Bachelor of Science in Data Science</h3>
+            <p>COMSATS University Islamabad</p>
+            <p>2022 – 2026</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- Contact Section -->
+
 <section id="contact">
-    <h2 class="section-title">Contact Me</h2>
-    <p>Email: Add your professional email here</p>
-    <p>LinkedIn: Add your LinkedIn profile link</p>
-    <p>GitHub: https://github.com/fizagithub</p>
+    <div class="container">
+
+        <div class="section-heading">
+            <span>Let's Connect</span>
+            <h2>Contact Me</h2>
+            <p>
+                I am open to professional opportunities,
+                collaborations, and meaningful discussions
+                around data science, AI, and software development.
+            </p>
+        </div>
+
+        <div class="contact-links">
+
+            <a href="mailto:fizaf0012@gmail.com">
+                Email Me
+            </a>
+
+            <a href="https://www.linkedin.com/in/fiza-fatima-aa2b9a272/"
+               target="_blank" rel="noopener noreferrer">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/fizaf0012"
+               target="_blank" rel="noopener noreferrer">
+                GitHub
+            </a>
+
+        </div>
+    </div>
 </section>
 
 <footer>
-    <p>© 2026 Fiza Fatima. All rights reserved.</p>
+    <p>© 2026 Fiza Fatima. All Rights Reserved.</p>
 </footer>
 
 </body>
