@@ -379,7 +379,41 @@
             padding: 20px;
             font-size: 13px;
         }
+        /* Professional Hero Layout */
 
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1.4fr 0.8fr;
+    align-items: center;
+    gap: 60px;
+}
+
+.profile-image {
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image img {
+    width: 310px;
+    height: 370px;
+    object-fit: cover;
+    object-position: center 25%;
+    border-radius: 18px;
+    border: 6px solid white;
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.15);
+}
+
+@media (max-width: 700px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .profile-image img {
+        width: 250px;
+        height: 300px;
+    }
+}
         /* Mobile */
 
         @media (max-width: 700px) {
@@ -431,21 +465,25 @@
 
 <!-- Hero Section -->
 
+<!-- Hero Section -->
+
 <section class="hero" id="home">
-    <div class="container">
+    <div class="container hero-layout">
+
         <div class="hero-content">
 
-            <div class="intro">Data Science Graduate</div>
+            <div class="intro">DATA SCIENCE GRADUATE</div>
 
             <h1>Hello, I'm <span>Fiza Fatima</span></h1>
 
             <h2>Data Science | AI | Software Development</h2>
 
             <p>
-                I am passionate about transforming data into meaningful
-                insights and building practical technology solutions.
-                My interests include data analytics, artificial intelligence,
-                natural language processing, and software development.
+                I enjoy transforming data into meaningful insights
+                and building practical technology solutions.
+                My interests include data analytics, artificial
+                intelligence, natural language processing,
+                and software development.
             </p>
 
             <div class="buttons">
@@ -453,12 +491,18 @@
                     Explore Projects
                 </a>
 
-                <a href="mailto:fizaf0012@gmail.com" class="btn btn-outline">
+                <a href="#contact" class="btn btn-outline">
                     Contact Me
                 </a>
             </div>
 
         </div>
+
+        <div class="profile-image">
+            <img src="fiza-profile.jpg"
+                 alt="Professional portrait of Fiza Fatima">
+        </div>
+
     </div>
 </section>
 
@@ -781,9 +825,10 @@
 
         <div class="contact-links">
 
-            <a href="mailto:fizaf0012@gmail.com">
-                Email Me
-            </a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fizaf0012@gmail.com"
+   target="_blank" rel="noopener noreferrer">
+    Email Me
+</a>
 
             <a href="https://www.linkedin.com/in/fiza-fatima-aa2b9a272/"
                target="_blank" rel="noopener noreferrer">
