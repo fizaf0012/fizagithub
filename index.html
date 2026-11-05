@@ -511,6 +511,69 @@
                 font-size: 27px;
             }
         }
+        /* Expandable PolicyPulse Project */
+.policy-project-card {
+    display: block;
+    color: inherit;
+}
+
+.project-details {
+    margin-top: 22px;
+}
+
+.details-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+}
+
+.details-button::-webkit-details-marker {
+    display: none;
+}
+
+.details-button:hover {
+    background: #dbeafe;
+}
+
+.details-arrow {
+    font-size: 20px;
+}
+
+.project-expanded {
+    margin-top: 22px;
+    padding-top: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.project-expanded h4 {
+    color: var(--navy);
+    margin: 18px 0 10px;
+}
+
+.project-expanded p,
+.project-expanded li {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: 14px;
+}
+
+.project-expanded ul {
+    padding-left: 20px;
+}
+
+.screenshot-hint {
+    font-size: 13px;
+    margin-bottom: 15px;
+}
     </style>
 </head>
 
@@ -684,16 +747,17 @@
 
         <div class="projects-grid">
 
-            <a href="#policypulse" class="project-card">
+            <div class="project-card policy-project-card">
     <div class="project-number">PROJECT 01</div>
+
     <h3>PolicyPulse</h3>
+
     <p>
-        An AI-powered public opinion analysis platform
-        that collects multilingual policy-related data
-        and analyzes public sentiment using NLP.
-        Includes a sentiment analysis pipeline,
-        chatbot, and interactive dashboard.
+        An AI-powered public opinion analysis platform that collects
+        multilingual policy-related data and analyzes public sentiment
+        using NLP.
     </p>
+
     <div class="tags">
         <span>Python</span>
         <span>NLP</span>
@@ -702,8 +766,118 @@
         <span>PostgreSQL</span>
         <span>Streamlit</span>
     </div>
-</a>
 
+    <details class="project-details">
+        <summary class="details-button">
+            Explore Project Details
+            <span class="details-arrow">＋</span>
+        </summary>
+
+        <div class="project-expanded">
+
+            <h4>Project Overview</h4>
+            <p>
+                PolicyPulse is my Final Year Project (FYP), developed
+                to analyze public opinion about government policies
+                and public issues, with a focus on health and education.
+                It uses NLP and AI to classify public feedback into
+                positive, negative, and neutral sentiments.
+            </p>
+
+            <h4>Key Features</h4>
+            <ul>
+                <li>Multilingual analysis of Urdu, Roman Urdu, and English.</li>
+                <li>Positive, negative, and neutral sentiment classification.</li>
+                <li>Interactive sentiment dashboards and trend analysis.</li>
+                <li>Policy comparison and regional analysis.</li>
+                <li>AI-powered chatbot for policy-related queries.</li>
+                <li>Role-based access for different user types.</li>
+            </ul>
+
+            <h4>My Contribution</h4>
+            <p>
+                Worked on data collection and preprocessing, multilingual
+                sentiment analysis, backend integration, database design,
+                dashboard development, documentation, and testing.
+            </p>
+
+            <h4>Application Screenshots</h4>
+            <p class="screenshot-hint">
+                Select any screenshot to view it in a larger size.
+            </p>
+
+            <div class="policy-gallery">
+
+                <figure>
+                    <img src="images/01-policy-pulse-homepage.jpg"
+                         alt="PolicyPulse homepage">
+                    <figcaption>PolicyPulse Homepage</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/02-account-signup.jpg"
+                         alt="Account registration">
+                    <figcaption>User Registration</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/03-admin-dashboard.jpg"
+                         alt="Admin dashboard">
+                    <figcaption>Admin Dashboard</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/04-sentiment-analysis-overview.png"
+                         alt="Sentiment analysis overview">
+                    <figcaption>Sentiment Analysis Overview</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/05-sentiment-trends.png"
+                         alt="Sentiment trends">
+                    <figcaption>Sentiment Trends</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/06-policy-comparison.png"
+                         alt="Policy comparison">
+                    <figcaption>Policy Comparison</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/07-ai-chatbot.png"
+                         alt="AI chatbot">
+                    <figcaption>AI Chatbot</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/08-data-explorer.png"
+                         alt="Data explorer">
+                    <figcaption>Data Explorer</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/09-user-management.png"
+                         alt="User management">
+                    <figcaption>User Management</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/image (1).png"
+                         alt="Party supporters sentiment">
+                    <figcaption>Party Supporters Sentiment</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="images/image.png"
+                         alt="Multilingual data collection">
+                    <figcaption>Multilingual Data Collection</figcaption>
+                </figure>
+
+            </div>
+        </div>
+    </details>
+</div>
             <div class="project-card">
                 <div class="project-number">PROJECT 02</div>
                 <h3>Jobify Recruitment Analytics</h3>
@@ -794,134 +968,7 @@
         </div>
     </div>
 </section>
-<section class="section" id="policypulse">
-    <div class="container">
 
-        <h2 class="section-title">PolicyPulse – AI-Powered Public Opinion Analytics</h2>
-
-        <div class="policy-overview">
-            <h3>Project Overview</h3>
-
-            <p>
-                PolicyPulse is my Final Year Project (FYP), developed to
-                analyze public opinion about government policies,
-                development projects, and current issues, with a focus
-                on health and education.
-            </p>
-
-            <p>
-                The platform uses Natural Language Processing (NLP)
-                and Artificial Intelligence to collect, process, and
-                analyze public feedback from multiple sources.
-                It classifies opinions into positive, negative, and
-                neutral sentiments and presents insights through
-                interactive dashboards.
-            </p>
-
-            <h3>Key Features</h3>
-            <ul>
-                <li>Multilingual text analysis for Urdu, Roman Urdu, and English.</li>
-                <li>Sentiment classification: Positive, Negative, and Neutral.</li>
-                <li>Interactive dashboards for exploring public opinion.</li>
-                <li>Policy comparison and sentiment trend analysis.</li>
-                <li>Regional and language-based analysis.</li>
-                <li>AI-powered chatbot for policy-related queries.</li>
-                <li>Role-based access for administrators, researchers, and general users.</li>
-            </ul>
-
-            <h3>Technology Stack</h3>
-            <p>
-                Python · Streamlit · FastAPI · PostgreSQL ·
-                XLM-RoBERTa · Natural Language Processing (NLP)
-            </p>
-
-            <h3>My Contribution</h3>
-            <p>
-                Worked on data collection and preprocessing,
-                multilingual sentiment analysis, backend integration,
-                database design, dashboard development, and project
-                documentation and testing.
-            </p>
-        </div>
-
-        <h3 class="section-title">Application Screenshots</h3>
-
-        <div class="policy-gallery">
-
-            <figure>
-                <img src="images/01-policy-pulse-homepage.jpg"
-                     alt="PolicyPulse homepage">
-                <figcaption>PolicyPulse Homepage</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/02-account-signup.jpg"
-                     alt="PolicyPulse account registration">
-                <figcaption>User Registration</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/03-admin-dashboard.jpg"
-                     alt="PolicyPulse admin dashboard">
-                <figcaption>Admin Dashboard</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/04-sentiment-analysis-overview.png"
-                     alt="PolicyPulse sentiment analysis">
-                <figcaption>Sentiment Analysis Overview</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/05-sentiment-trends.png"
-                     alt="PolicyPulse sentiment trends">
-                <figcaption>Sentiment Trends</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/06-policy-comparison.png"
-                     alt="PolicyPulse policy comparison">
-                <figcaption>Policy Comparison</figcaption>
-            </figure>
-
-             <figure>
-                <img src="images/image (1).png"
-                     alt="Sentiment">
-                <figcaption>Party Supporters Sentiment</figcaption>
-            </figure>
-            
-             <figure>
-                <img src="images/image.png"
-                     alt="multi-language data">
-                <figcaption>collection of multi-language data</figcaption>
-            </figure>
-            <figure>
-                <img src="images/07-ai-chatbot.png"
-                     alt="PolicyPulse AI chatbot">
-                <figcaption>AI Chatbot</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/08-data-explorer.png"
-                     alt="PolicyPulse data explorer">
-                <figcaption>Data Explorer</figcaption>
-            </figure>
-
-            <figure>
-                <img src="images/09-user-management.png"
-                     alt="PolicyPulse user management">
-                <figcaption>User Management</figcaption>
-            </figure>
-
-        </div>
-
-        <p class="policy-note">
-            Academic Final Year Project. Application screenshots
-            showcase the implemented project interface.
-        </p>
-
-    </div>
-</section>
 <!-- Skills Section -->
 
 <section id="skills">
