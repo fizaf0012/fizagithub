@@ -1115,6 +1115,41 @@
     </div>
 
 </dialog>
+    <!-- SCREENSHOT IMAGE VIEWER -->
+<dialog id="screenshotViewer" class="screenshot-viewer">
+
+    <div class="viewer-content">
+
+        <button type="button"
+                class="viewer-close"
+                onclick="closeScreenshotViewer()"
+                aria-label="Close">
+            &times;
+        </button>
+
+        <div class="viewer-toolbar">
+            <button type="button" onclick="zoomScreenshot(-0.2)">
+                −
+            </button>
+
+            <button type="button" onclick="resetScreenshotZoom()">
+                Reset
+            </button>
+
+            <button type="button" onclick="zoomScreenshot(0.2)">
+                +
+            </button>
+        </div>
+
+        <div class="viewer-image-container">
+            <img id="viewerImage" src="" alt="Enlarged application screenshot">
+        </div>
+
+        <p id="viewerCaption"></p>
+
+    </div>
+
+</dialog>
 </section>
 
 <!-- Skills Section -->
